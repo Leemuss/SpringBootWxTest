@@ -1,0 +1,11 @@
+<xml>
+    <ToUserName>gh_ba3ffb3b11c8</ToUserName>
+    <FromUserName>opSgm1sB8VlAfsdBnHwTAPJMAlfY</FromUserName>
+    <CreateTime>1548574358</CreateTime>
+    <MsgType>text</MsgType>
+    <Content>我不能识别你发送的内容!</Content>
+</xml>
+
+<!--
+{MediaId=RMZpFThQLZHYjh0TJtZVmJQN-b7dMXTunMm2g7rTLNLKo49sbJpdX11L_OvENo92, CreateTime=1548600281, ToUserName=gh_ba3ffb3b11c8, FromUserName=opSgm1sB8VlAfsdBnHwTAPJMAlfY, MsgType=image, PicUrl=http://mmbiz.qpic.cn/mmbiz_jpg/V6sQHCpiblmCTG1LiaFuSgCJ3wicxTs1s2tBoveCvicZQ6LjGniajyCB6ItPxkjXgS3UopwnHGFvyj25RziacknAytrA/0, MsgId=6651187561943615310}
+-->
