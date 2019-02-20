@@ -1,5 +1,6 @@
 package com.stu.blog.util;
 
+import com.alibaba.fastjson.JSONObject;
 import com.stu.blog.msgdomain.*;
 import com.thoughtworks.xstream.XStream;
 import org.dom4j.Document;
@@ -24,8 +25,10 @@ public class WxMsgHandlerUtil {
 
 
     private static final String GET_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-    private static final String APPID = "XX";
-    private static final String APPSECRET = "XX";
+    private static final String APPID = "wxeeacd25f725c3c06";
+    private static final String APPSECRET = "0d8e89066b62ef1b82993a7765db92b8";
+
+    private static AccessToken accessToken;
 
     /**
      * 1）将token、timestamp、nonce三个参数进行字典序排序
@@ -142,9 +145,30 @@ public class WxMsgHandlerUtil {
         return s;
     }
 
+    /**
+     * 解析tonken
+     */
     public static void getToken(){
         String url = GET_TOKEN_URL.replace("APPID",APPID).replace("APPSECRET",APPSECRET);
         String tokenStr = WxMsgUtil.getToken(url);
+        System.out.println("tokenStr:" + tokenStr);
+        //String tokenStr = "{\"access_token\":\"18_INjiAmG2E7flEbPlFiHlzfkEppq5YERSjXRsWqgknkvKK_KBTMNbwxqFAU7e0EOS9hHCFXBKa0MqRBIjyT8B7W5onN0uym269-A15G-wwAT4aeRBoBZAkeJia-_nBn2Fl3A5U-3q5Yo-7rVBSNTcAEADYE\",\"expires_in\":7200}";
+        accessToken = JSONObject.parseObject(tokenStr, AccessToken.class);
+        //String access_token = jsonObject.getString("access_token");
+        //String expires_in = jsonObject.getString("expires_in");
 
+        //WxMsgHandlerUtil.accessToken = new AccessToken(access_token,expires_in);
+        //System.out.println(accessToken);
+    }
+
+    /**
+     * 向外暴露AccessToken
+     * @return
+     */
+    public static String expiredToken(){
+        if (accessToken == null || accessToken.isExpired()){
+            getToken();
+        }
+        return accessToken.getAccessToken();
     }
 }

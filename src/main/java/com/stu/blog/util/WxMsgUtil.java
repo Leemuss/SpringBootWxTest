@@ -39,7 +39,7 @@ public class WxMsgUtil {
             byte[] bytes = new byte[1024];
             int len;
             StringBuilder sb = new StringBuilder();
-            while ((len = is.read()) != -1){
+            while ((len = is.read(bytes)) != -1){
                 sb.append(new String(bytes,0,len));
             }
             return sb.toString();

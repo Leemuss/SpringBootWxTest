@@ -1,5 +1,6 @@
 package com.stu.blog.service.impl;
 
+import com.stu.blog.msgdomain.AccessToken;
 import com.stu.blog.msgdomain.BaseMessage;
 import com.stu.blog.msgdomain.TextMessage;
 import com.stu.blog.msgdomain.WxMsgInfo;
@@ -65,6 +66,8 @@ public class WxCoreServiceImpl implements WxCoreService {
         //把消息对象处理为xml
         System.out.println(msg);
 
+        String accessToken = WxMsgHandlerUtil.expiredToken();
+        System.out.println("accessToken:" + accessToken);
 
         return msg != null?WxMsgHandlerUtil.beanToXml(msg):null;
     }

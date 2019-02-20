@@ -52,6 +52,7 @@ public class HelloController {
         request.setCharacterEncoding("UTF-8");
         // 在响应消息（回复消息给用户）时，也将编码方式设置为UTF-8，原理同上；
         response.setCharacterEncoding("UTF-8");
+        //wxCoreService.g
         if (!StringUtils.isEmpty(xml)){
             log.info("返回微信消息成功！");
             System.out.println(xml);
