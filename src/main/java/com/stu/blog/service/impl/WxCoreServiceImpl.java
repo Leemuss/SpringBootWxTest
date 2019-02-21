@@ -1,20 +1,14 @@
 package com.stu.blog.service.impl;
 
-import com.stu.blog.msgdomain.AccessToken;
-import com.stu.blog.msgdomain.BaseMessage;
-import com.stu.blog.msgdomain.TextMessage;
-import com.stu.blog.msgdomain.WxMsgInfo;
+import com.stu.blog.wxdomain.BaseMessage;
 import com.stu.blog.service.WxCoreService;
 import com.stu.blog.util.WxMsgHandlerUtil;
-import com.stu.blog.util.WxMsgUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 import java.util.Map;
 
 @Service
@@ -59,6 +53,9 @@ public class WxCoreServiceImpl implements WxCoreService {
                 //链接
             case "link":
                 break;
+            case "event":
+                msg = WxMsgHandlerUtil.dealEvent(map);
+                break;
             default:
                 break;
         }
@@ -71,4 +68,5 @@ public class WxCoreServiceImpl implements WxCoreService {
 
         return msg != null?WxMsgHandlerUtil.beanToXml(msg):null;
     }
+
 }

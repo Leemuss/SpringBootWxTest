@@ -1,4 +1,4 @@
-    package com.stu.blog.msgdomain;
+    package com.stu.blog.wxdomain;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

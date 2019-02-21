@@ -1,7 +1,7 @@
 package com.stu.blog.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.stu.blog.msgdomain.*;
+import com.stu.blog.wxdomain.*;
 import com.thoughtworks.xstream.XStream;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -124,6 +124,12 @@ public class WxMsgHandlerUtil {
 
     }
 
+    public static BaseMessage dealEvent(Map<String, String> map) {
+        String content = map.get("Event");
+
+        return null;
+    }
+
     private static String chatWithRobort(String content) {
         return null;
     }
@@ -171,4 +177,6 @@ public class WxMsgHandlerUtil {
         }
         return accessToken.getAccessToken();
     }
+
+
 }

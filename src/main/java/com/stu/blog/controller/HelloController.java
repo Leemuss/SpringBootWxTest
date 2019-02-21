@@ -1,7 +1,10 @@
 package com.stu.blog.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.stu.blog.service.WxCoreService;
 import com.stu.blog.util.WxMsgHandlerUtil;
+import com.stu.blog.wxdomain.memudomain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -61,5 +66,47 @@ public class HelloController {
             log.info("微信消息处理失败！");
             return "error";
         }
+    }
+
+    @RequestMapping("/createMemu")
+    public String createMemu(){
+        //一级菜单
+        Button button = new Button();
+        ClickButton clickButton = new ClickButton();
+        clickButton.setKey("1");
+        clickButton.setName("点击1级菜单");
+        ViewButton viewButton = new ViewButton();
+        viewButton.setUrl("http://www.baidu.com");
+        viewButton.setName("视图1级菜单");
+
+        List<AbsButton> abs = new ArrayList<>();
+        abs.add(viewButton);
+        abs.add(clickButton);
+
+        button.setButton(abs);
+
+        //二级菜单
+        SubButton subButton = new SubButton();
+        subButton.setName("有子菜单");
+        ClickButton sub_cb = new ClickButton();
+        sub_cb.setKey("21");
+        sub_cb.setName("点击2级菜单");
+        ViewButton sub_vb = new ViewButton();
+        sub_vb.setUrl("http://yun.baidu.com");
+        sub_vb.setName("视图2级菜单");
+        PhotoOrAlbumButton poab = new PhotoOrAlbumButton();
+        poab.setKey("23");
+        poab.setName("图片处理2级菜单");
+        List<AbsButton> sub = new ArrayList<>();
+        sub.add(sub_cb);
+        sub.add(sub_vb);
+        sub.add(poab);
+
+        subButton.setSubButton(sub);
+        button.getButton().add(subButton);
+
+        String s = JSON.toJSONString(button);
+        System.out.println(s);
+        return null;
     }
 }

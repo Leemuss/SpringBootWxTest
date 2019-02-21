@@ -1,4 +1,4 @@
-package com.stu.blog.msgdomain;
+package com.stu.blog.wxdomain;
 
 public class Music {
 

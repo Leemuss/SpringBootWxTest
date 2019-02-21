@@ -1,8 +1,6 @@
-package com.stu.blog.msgdomain;
+package com.stu.blog.wxdomain;
 
 import org.springframework.stereotype.Component;
-
-import java.io.Serializable;
 
 @Component
 public class WxMsgInfo {
